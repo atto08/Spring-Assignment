@@ -24,6 +24,3 @@
 > 없다. 빈(Bean)에 대해서 아직 잘모른다.
 6. API 명세서 작성 가이드라인을 검색하여 직접 작성한 명세서와 비교해보세요!
 >[API 명세서](https://www.notion.so/Spring-API-cd8b64f4cbaf45d8bbd19288fe6c1577)
-
-파일경로 =>> Java > com > sparta > assignment >>> controller,dto,entity,repository,service
-확인 부탁드립니다:)
