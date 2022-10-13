@@ -1,4 +1,4 @@
-package com.sparta.assignment.entity;
+package com.sparta.assign3.entity;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;

@@ -1,6 +1,6 @@
-package com.sparta.assignment.dto;
+package com.sparta.assign3.dto;
 
-import com.sparta.assignment.entity.Board;
+import com.sparta.assign3.entity.Board;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 

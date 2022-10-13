@@ -1,11 +1,12 @@
-package com.sparta.assignment.entity;
+package com.sparta.assign3.entity;
 
-import com.sparta.assignment.dto.BoardRequestDto;
-import com.sparta.assignment.dto.PasswordRequestDto;
+import com.sparta.assign3.dto.BoardRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter // get 함수를 일괄적으로 만들어줍니다.
 @NoArgsConstructor // 기본 생성자를 만들어줍니다.
@@ -15,6 +16,7 @@ public class Board extends Timestamped {
     // ID가 자동으로 생성 및 증가합니다.
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
+    @Column(name = "BOARD_ID")
     private Long id;
 
     // 반드시 값을 가지도록 합니다.
@@ -26,6 +28,8 @@ public class Board extends Timestamped {
     private String author;
     @Column(nullable = false)
     private String password;
+    @OneToMany(mappedBy = "board")
+    private final List<Comment> commentList = new ArrayList<>();
 
     //게시글 작성 시 이용.
     public Board(BoardRequestDto requestDto){
@@ -41,5 +45,10 @@ public class Board extends Timestamped {
         this.content = requestDto.getContent();
         this.author = requestDto.getAuthor();
         this.password = requestDto.getPassword();
+    }
+
+    public void addComment(Comment comment){
+        comment.setBoard(this);
+        this.commentList.add(comment);
     }
 }

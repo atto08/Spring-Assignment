@@ -1,12 +1,13 @@
-package com.sparta.assignment.controller;
+package com.sparta.assign3.controller;
 
-import com.sparta.assignment.dto.BoardResponseDto;
-import com.sparta.assignment.dto.PasswordRequestDto;
-import com.sparta.assignment.entity.Board;
-import com.sparta.assignment.dto.BoardRequestDto;
-import com.sparta.assignment.repository.BoardRepository;
-import com.sparta.assignment.service.BoardService;
+import com.sparta.assign3.dto.BoardRequestDto;
+import com.sparta.assign3.dto.BoardResponseDto;
+import com.sparta.assign3.dto.PasswordRequestDto;
+import com.sparta.assign3.entity.Board;
+import com.sparta.assign3.repository.BoardRepository;
+import com.sparta.assign3.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class BoardRestController {
     // 게시된 글 전체목록 조회
     @GetMapping("/api/boards")
     public List<Board> getBoards() {
-        return boardRepository.findAll();
+        return boardRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"));
     }
 
     // 신규 게시글 등록
@@ -38,11 +39,11 @@ public class BoardRestController {
         return boardService.findBoardId(id);
     }
 
-    // 게시글 패스워드 확인
-    @PostMapping("/api/boards/{id}")
-    public Boolean passwordCheck(@PathVariable Long id, @RequestBody PasswordRequestDto passwordRequestDto){
-        return boardService.checkPassword(id, passwordRequestDto);
-    }
+//    // 게시글 패스워드 확인
+//    @PostMapping("/api/boards/{id}")
+//    public Boolean passwordCheck(@PathVariable Long id, @RequestBody PasswordRequestDto passwordRequestDto){
+//        return boardService.checkPassword(id, passwordRequestDto);
+//    }
 
     //게시글 수정
     @PutMapping("/api/boards/{id}")
